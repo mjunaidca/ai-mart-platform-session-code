@@ -3,6 +3,7 @@ from app.models.product_model import Product
 
 # Add a New Product to the Database
 def add_new_product(product_data: Product, session: Session):
+    print("Adding Product to Database")
     session.add(product_data)
     session.commit()
     session.refresh(product_data)
