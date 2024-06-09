@@ -30,6 +30,7 @@ pydantic-settings = "^2.2.1"
 sentry-sdk = {extras = ["fastapi"], version = "^1.42.0"}
 aiokafka = "^0.10.0"
 protobuf = "^5.27.0"
+openai = "^1.33.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.1.1"

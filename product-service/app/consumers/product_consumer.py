@@ -31,6 +31,8 @@ async def consume_messages(topic, bootstrap_servers):
                 db_insert_product = add_new_product(
                     product_data=Product(**product_data), session=session)
                 print("DB_INSERT_PRODUCT", db_insert_product)
+                
+                # Event EMIT In NEW TOPIC
 
             # Here you can add code to process each message.
             # Example: parse the message, store it in a database, etc.

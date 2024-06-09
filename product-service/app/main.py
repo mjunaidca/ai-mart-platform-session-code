@@ -15,7 +15,7 @@ from app.crud.product_crud import add_new_product, get_all_products, get_product
 from app.deps import get_session, get_kafka_producer
 from app.consumers.product_consumer import consume_messages
 from app.consumers.inventroy_consumer import consume_inventory_messages
-
+from app.hello_ai import chat_completion
 
 def create_db_and_tables() -> None:
     SQLModel.metadata.create_all(engine)
@@ -99,3 +99,7 @@ def update_single_product(product_id: int, product: ProductUpdate, session: Anno
         raise e
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/hello-ai")
+def get_ai_response(prompt:str):
+    return chat_completion(prompt)

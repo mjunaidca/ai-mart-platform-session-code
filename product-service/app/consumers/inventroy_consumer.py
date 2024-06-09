@@ -3,7 +3,7 @@ import json
 from app.models.product_model import Product, ProductUpdate
 from app.crud.product_crud import validate_product_by_id
 from app.deps import get_session, get_kafka_producer
-
+from app.hello_ai import chat_completion
 
 async def consume_inventory_messages(topic, bootstrap_servers):
     # Create a consumer instance.
@@ -34,6 +34,9 @@ async def consume_inventory_messages(topic, bootstrap_servers):
                     product_id=product_id, session=session)
                 print("PRODUCT VALIDATION CHECK", product)
                 # 3. If Valid
+                if product is None:
+                    email_body = chat_completion(f"Admin has Sent InCorrect Product. Write Email to Admin {product_id}")
+                    
                 if product is not None:
                         # - Write New Topic
                     print("PRODUCT VALIDATION CHECK NOT NONE")
