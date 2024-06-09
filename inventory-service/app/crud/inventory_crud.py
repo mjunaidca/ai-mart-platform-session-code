@@ -5,6 +5,7 @@ from app.models.inventory_model import InventoryItem
 # Add a New Inventory Item to the Database
 def add_new_inventory_item(inventory_item_data: InventoryItem, session: Session):
     print("Adding Inventory Item to Database")
+    
     session.add(inventory_item_data)
     session.commit()
     session.refresh(inventory_item_data)
